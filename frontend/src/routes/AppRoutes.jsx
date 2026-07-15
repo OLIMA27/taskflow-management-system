@@ -15,6 +15,7 @@ import Tasks from "../pages/Tasks";
 import CreateTask from "../pages/CreateTask";
 import Activities from "../pages/Activities";
 import Notifications from "../pages/Notifications";
+import EditManager from "../pages/EditManager";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 import RoleRoute from "../components/RoleRoute";
@@ -23,7 +24,11 @@ import DashboardLayout from "../layouts/DashboardLayout";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route
+        path="/"
+        element={<Navigate to="/login" replace />}
+      />
+
       <Route path="/login" element={<Login />} />
 
       <Route
@@ -79,9 +84,27 @@ const AppRoutes = () => {
         />
 
         <Route
+          path="/edit-manager/:id"
+          element={
+            <RoleRoute allowedRoles={["admin"]}>
+              <EditManager />
+            </RoleRoute>
+          }
+        />
+
+        <Route
           path="/members"
           element={
             <RoleRoute allowedRoles={["manager"]}>
+              <MemberDetails />
+            </RoleRoute>
+          }
+        />
+
+        <Route
+          path="/admin-members"
+          element={
+            <RoleRoute allowedRoles={["admin"]}>
               <MemberDetails />
             </RoleRoute>
           }
@@ -96,7 +119,10 @@ const AppRoutes = () => {
           }
         />
 
-        <Route path="/projects" element={<Projects />} />
+        <Route
+          path="/projects"
+          element={<Projects />}
+        />
 
         <Route
           path="/create-project"
@@ -107,8 +133,15 @@ const AppRoutes = () => {
           }
         />
 
-        <Route path="/projects/:id" element={<ProjectDetails />} />
-        <Route path="/tasks" element={<Tasks />} />
+        <Route
+          path="/projects/:id"
+          element={<ProjectDetails />}
+        />
+
+        <Route
+          path="/tasks"
+          element={<Tasks />}
+        />
 
         <Route
           path="/create-task"
@@ -119,8 +152,15 @@ const AppRoutes = () => {
           }
         />
 
-        <Route path="/activities" element={<Activities />} />
-        <Route path="/notifications" element={<Notifications />} />
+        <Route
+          path="/activities"
+          element={<Activities />}
+        />
+
+        <Route
+          path="/notifications"
+          element={<Notifications />}
+        />
       </Route>
     </Routes>
   );

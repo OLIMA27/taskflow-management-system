@@ -29,6 +29,17 @@ const userSchema = new mongoose.Schema(
       default: "member",
     },
 
+    designation: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+
+    memberNumber: {
+      type: Number,
+      default: null,
+    },
+
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -40,7 +51,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Hash password before saving
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) {
     return;
@@ -54,11 +64,10 @@ userSchema.pre("save", async function () {
   );
 });
 
-// Compare login password
 userSchema.methods.matchPassword = async function (
   enteredPassword
 ) {
-  return await bcrypt.compare(
+  return bcrypt.compare(
     enteredPassword,
     this.password
   );
