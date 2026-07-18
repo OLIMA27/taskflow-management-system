@@ -100,5 +100,4 @@ const ProjectCard = ({
     </div>
   );
 };
-
 export default ProjectCard;

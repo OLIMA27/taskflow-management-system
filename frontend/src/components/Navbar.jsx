@@ -1,7 +1,3 @@
-
-
-
-
 import { FiBell, FiMenu, FiUser } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
 
@@ -20,8 +16,7 @@ const Navbar = () => {
       <div className="flex min-w-0 items-center gap-3">
         <button
           type="button"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-sky-100 bg-sky-50 text-sky-600 transition hover:bg-sky-100 lg:hidden"
-        >
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-sky-100 bg-sky-50 text-sky-600 transition hover:bg-sky-100 lg:hidden">
           <FiMenu className="text-xl" />
         </button>
 

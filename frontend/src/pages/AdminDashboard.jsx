@@ -1,27 +1,11 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
+import { Bar,
+  BarChart,CartesianGrid,Cell,Legend,Pie,PieChart,ResponsiveContainer,Tooltip,XAxis,YAxis,
 } from "recharts";
 
-import {
-  FiActivity,
-  FiAlertTriangle,
-  FiBriefcase,
-  FiFolder,
-  FiList,
-  FiUsers,
+import {FiActivity,FiAlertTriangle,FiBriefcase,FiFolder,FiList,FiUsers,
 } from "react-icons/fi";
 
 import { getDashboard } from "../services/dashboardService";

@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import Login from "../pages/Login";
 import AdminDashboard from "../pages/AdminDashboard";
 import ManagerDashboard from "../pages/ManagerDashboard";
@@ -24,143 +23,90 @@ import DashboardLayout from "../layouts/DashboardLayout";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<Navigate to="/login" replace />}
-      />
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
       <Route path="/login" element={<Login />} />
 
-      <Route
-        element={
-          <ProtectedRoute>
-            <DashboardLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route
-          path="/admin-dashboard"
-          element={
-            <RoleRoute allowedRoles={["admin"]}>
-              <AdminDashboard />
-            </RoleRoute>
-          }
-        />
+      <Route element={
+        <ProtectedRoute>           
+          <DashboardLayout />
+        </ProtectedRoute>}>
 
-        <Route
-          path="/manager-dashboard"
+        <Route path="/admin-dashboard"
+          element={
+            <RoleRoute allowedRoles={["admin"]}>   //check role
+              <AdminDashboard />
+            </RoleRoute>} />
+
+        <Route path="/manager-dashboard"
           element={
             <RoleRoute allowedRoles={["manager"]}>
               <ManagerDashboard />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/member-dashboard"
+        <Route path="/member-dashboard"
           element={
             <RoleRoute allowedRoles={["member"]}>
               <MemberDashboard />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/managers"
+        <Route path="/managers"
           element={
             <RoleRoute allowedRoles={["admin"]}>
               <ManagerDetails />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/create-manager"
+        <Route path="/create-manager"
           element={
             <RoleRoute allowedRoles={["admin"]}>
               <CreateManager />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/edit-manager/:id"
+        <Route path="/edit-manager/:id"
           element={
             <RoleRoute allowedRoles={["admin"]}>
               <EditManager />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/members"
+        <Route path="/members"
           element={
             <RoleRoute allowedRoles={["manager"]}>
               <MemberDetails />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/admin-members"
+        <Route path="/admin-members"
           element={
             <RoleRoute allowedRoles={["admin"]}>
               <MemberDetails />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/create-member"
+        <Route path="/create-member"
           element={
             <RoleRoute allowedRoles={["manager"]}>
               <CreateMember />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/projects"
-          element={<Projects />}
-        />
+        <Route path="/projects" element={<Projects />} />
 
-        <Route
-          path="/create-project"
+        <Route path="/create-project"
           element={
             <RoleRoute allowedRoles={["admin"]}>
               <CreateProject />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/projects/:id"
-          element={<ProjectDetails />}
-        />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
 
-        <Route
-          path="/tasks"
-          element={<Tasks />}
-        />
+        <Route path="/tasks" element={<Tasks />} />
 
-        <Route
-          path="/create-task"
+        <Route path="/create-task"
           element={
             <RoleRoute allowedRoles={["manager"]}>
               <CreateTask />
-            </RoleRoute>
-          }
-        />
+            </RoleRoute>} />
 
-        <Route
-          path="/activities"
-          element={<Activities />}
-        />
+        <Route path="/activities" element={<Activities />} />
 
-        <Route
-          path="/notifications"
-          element={<Notifications />}
-        />
+        <Route path="/notifications" element={<Notifications />} />
       </Route>
     </Routes>
   );
